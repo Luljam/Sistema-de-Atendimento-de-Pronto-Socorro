@@ -30,14 +30,15 @@ namespace AtendimentoProntoSocorro.Controllers
             if (isAjax)
             {
                 var pacientes = await pacienteRepository.ListaPaciente(searchString);
-                if (pacientes != null)
+                //if (pacientes != null)
+                //{
+                if (pacientes.Count() == 0)
                 {
-                    if (!pacientes.Any())
-                    {
-                        TempData["AlertMessage"] = "Nenhum registro encontrado!";
-                    }
+                    TempData["AlertMessage"] = "Nenhum registro encontrado!";
                 }
+
                 return PartialView("_Busca", pacientes.ToList());
+                //}
             }
 
             return View();

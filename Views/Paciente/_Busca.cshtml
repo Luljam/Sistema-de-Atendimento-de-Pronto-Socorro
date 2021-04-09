@@ -1,58 +1,64 @@
 ﻿@model IEnumerable<AtendimentoProntoSocorro.Models.Paciente>
 
-<div id="divLista">
-    @if (Model != null)
-    {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Nome)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DataNascimento)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CPF)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Telefone1)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Telefone2)
-                    </th>
-                    <th>
-                        @Html.DisplayName("Ações")
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    @foreach (var item in Model)
-                    {
+    <div id="divLista">
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DataNascimento)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CPF)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Telefone1)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Telefone2)
-                        </td>
-                        <td>
-                            @Html.ActionLink("AberturaDeFicha", "AberturaDeFicha", "Ficha", new { cpf = item.CPF }) |
-                            @Html.ActionLink("Detalhes", "Details", new { cpf = item.CPF })
-                        </td>
-                    }
-                </tr>
-            </tbody>
-        </table>
-    }
-</div>
+        @if (Model != null)
+        {
+            @if (Model.Count() == 0)
+            {
+                <div id="success-alert" class="alert alert-danger" role="alert">@TempData["AlertMessage"]</div>
+            }
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataNascimento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CPF)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Telefone1)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Telefone2)
+                        </th>
+                        <th>
+                            @Html.DisplayName("Ações")
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach (var item in Model)
+                        {
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataNascimento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CPF)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telefone1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telefone2)
+                            </td>
+                            <td>
+                                @Html.ActionLink("AberturaDeFicha", "AberturaDeFicha", "Ficha", new { cpf = item.CPF }) |
+                                @Html.ActionLink("Detalhes", "Details", new { cpf = item.CPF })
+                            </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        }
+    </div>

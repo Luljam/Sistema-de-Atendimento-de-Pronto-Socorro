@@ -9,18 +9,13 @@
         <p>
             Procurarpor Nome: <input id="SearchString" type="text" />
             <input id="botao" type="button" value="Buscar" />
-
         </p>
     </form>
-  
+
     @* Carrega a PartialView na div sem recarregar a página toda *@
     <div id="ajax">
     </div>
 
-    @if (TempData["AlertMessage"] != null)
-    {
-        <div id="success-alert" class="alert alert-danger" role="alert">@TempData["AlertMessage"]</div>
-    }
 </div>
 @section Scripts
 {
