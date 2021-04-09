@@ -1,0 +1,23 @@
+﻿@model DadoClinico
+@{
+    ViewData["Title"] = "RegistroClinico";
+}
+
+<h1>Registro Clínico</h1>
+
+
+<h2>@Model.Id</h2>
+<div class="container">
+
+    <form asp-action="Create" method="post">
+
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label asp-for="RegistroClinico" class="control-label"></label>
+                <input type="text" asp-for="RegistroClinico" class="form-control" />
+                <span asp-validation-for="RegistroClinico" class="text-danger"></span>
+            </div>
+        </div>
+        <button id="gravar" class="btn btn-primary">Gravar</button>
+    </form>
+</div>

@@ -1,0 +1,52 @@
+﻿@model AtendimentoProntoSocorro.Models.Ficha
+
+
+@{
+    ViewData["Title"] = "Ficha de Atendimento";
+}
+
+<div class="container">
+    <h1>Abertura de Ficha de Atendimento</h1>
+
+    <div class="form-group">
+        <label asp-for="Paciente.Nome" class="control-label">@Model.Paciente.Nome</label>
+    </div>
+
+
+    <div class="x_panel">
+
+        <form asp-action="CadastroFicha" method="post">
+            <input type="hidden" asp-for="Paciente.CPF" class="form-control" value="@Model.Paciente.CPF" />
+            <div class="row">
+                <div class="col-4 form-group">
+                    <label asp-for="Especialidade" class="control-label"></label>
+                    @Html.DropDownListFor(e => e.Especialidade, new SelectList(Enum.GetValues(typeof(Especialidade))), "Selecione um item", new { @class = "form-control" })
+                    <span asp-validation-for="Especialidade" class="text-danger"></span>
+                </div>
+                <div class="col-4 form-group">
+                    <label asp-for="Procedencia" class="control-label"></label>
+                    @Html.DropDownListFor(e => e.Procedencia, new SelectList(Enum.GetValues(typeof(Procedencia))), "Selecione um item", new { @class = "form-control" })
+                    <span asp-validation-for="Procedencia" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label asp-for="Queixa" class="control-label"></label>
+                    <input type="text" asp-for="Queixa" class="form-control" />
+                    <span asp-validation-for="Queixa" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label asp-for="InformacaoResgate" class="control-label"></label>
+                    <input type="text" asp-for="InformacaoResgate" class="form-control" />
+                    <span asp-validation-for="InformacaoResgate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Gravar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

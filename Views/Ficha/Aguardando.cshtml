@@ -1,0 +1,74 @@
+﻿@model IEnumerable<AtendimentoProntoSocorro.Models.Ficha>
+
+@{
+    ViewData["Title"] = "Aguardando Atendimento";
+}
+
+<h1>Aguardando</h1>
+
+
+<table class="table table-sm table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFicha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Queixa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InformacaoResgate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusDaFicha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Especialidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Procedencia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paciente.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFicha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Queixa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InformacaoResgate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusDaFicha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especialidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Procedencia)
+            </td>
+            <td>
+                <a asp-action="" asp-route-id="">Chamar</a> |
+                @Html.ActionLink("Atender", "Atender","DadosClinicos", new { idFicha = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

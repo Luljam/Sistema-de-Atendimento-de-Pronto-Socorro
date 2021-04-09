@@ -1,0 +1,40 @@
+﻿@model Paciente
+@{
+    ViewData["Title"] = "Pesquisa Paciente";
+}
+@if (TempData["AlertMessage"] != null)
+{
+    <div id="success-alert" class="alert alert-success" role="alert">@TempData["AlertMessage"]</div>
+}
+
+<div class="container">
+    <h1>Localiza Paciente</h1>
+    <hr />
+
+
+    <form class="form-inline" asp-action="Lista" method="post">
+
+        <div class="form-group mx-sm-3 mb-2">
+            <label asp-for="CPF" class="my-1 mr-2">Informe o CPF</label>
+            <input type="text" class="form-control" name="cpf">
+            <span asp-validation-for="CPF" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Pesquisar</button>
+
+    </form>
+</div>
+
+
+@section Scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // show the alert
+            setTimeout(function () {
+                $(".alert").alert('close');
+            }, 2000);
+        });
+    </script>
+
+}
